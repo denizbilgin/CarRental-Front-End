@@ -1,8 +1,9 @@
 <div *ngIf="dataLoaded==false" class="spinner-border text-success" role="status">
     <span class="visually-hidden">Loading...</span>
 </div>
+<caption>Markalar</caption>
 <table *ngIf="dataLoaded==true" class="table">
-    <thead>
+    <thead class="thead-dark">
         <tr>
             <th>Marka Numarası</th>
             <th>Marka Adı</th>
