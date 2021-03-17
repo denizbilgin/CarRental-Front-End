@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BrandComponent } from './components/brand/brand.component';
+import { CarDetailComponent } from './components/car-detail/car-detail.component';
 import { CarComponent } from './components/car/car.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { RentalComponent } from './components/rental/rental.component';
@@ -11,7 +12,8 @@ const routes: Routes = [
   {path:"customers",component:CustomerComponent},
   {path:"rentals",component:RentalComponent},
   {path:"cars/brand/:brandId",component:CarComponent},
-  {path:"cars/color/:colorId",component:CarComponent}
+  {path:"cars/color/:colorId",component:CarComponent},
+  {path:"cars/cardetail/:carId",component:CarDetailComponent}
 ];
 
 @NgModule({
