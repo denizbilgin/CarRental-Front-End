@@ -1,4 +1,11 @@
 <ul class="list-group">
+    <div class="mb-3">
+        <label for="filterText" class="form-label">Marka Ara</label>
+        <input [(ngModel)]="filterText" type="text" class="form-control" id="filterText" placeholder="Arama ifadesi giriniz">
+    </div>
+    <div *ngIf="filterText.length>2" class="alert alert-primary">
+        {{filterText}} aradınız
+    </div>
     <li class="list-group-item active dark-blue" aria-current="true">Markalar</li>
     <li
     (click)="clearCurrentBrand()"
@@ -8,5 +15,5 @@
     routerLink="/cars/brand/{{brand.id}}"
     (click)="getCurrentBrand(brand)" 
     [class]="getCurrentBrandClass(brand)" 
-    *ngFor="let brand of brands">{{brand.brandName}}</li>
+    *ngFor="let brand of brands |brandFilter:filterText">{{brand.brandName}}</li>
 </ul>

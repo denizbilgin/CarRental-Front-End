@@ -5,6 +5,7 @@ import { CarImage } from 'src/app/models/carImage';
 import { CarImageService } from 'src/app/services/carImageService/car-image.service';
 import { CarService } from 'src/app/services/carService/car.service';
 import { tap } from "rxjs/operators" 
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-car',
@@ -20,12 +21,20 @@ export class CarComponent implements OnInit {
   dataLoaded=false;
   
 
-  constructor(private carService:CarService,private activatedRoute:ActivatedRoute,private carImageService:CarImageService) { }
+  constructor(
+    private carService:CarService,
+    private activatedRoute:ActivatedRoute,
+    private carImageService:CarImageService,
+    private toastrService:ToastrService
+    ) { }
 
   ngOnInit(): void {
     //subscribe'ın içindeki şeye erişilir.
     this.activatedRoute.params.subscribe(params => {
-      if(params["brandId"]){
+      if(params["brandId"] && params["colorId"]){
+        this.getCarByFilter(params["brandId"],params["colorId"])
+      }
+      else if(params["brandId"]){
         this.getCarsByBrand(params["brandId"]);
       }else if(params["colorId"]){
         this.getCarsByColor(params["colorId"]);
@@ -59,5 +68,15 @@ export class CarComponent implements OnInit {
 
   getCarsImages(){
     this.carImageService.getCarsImages()
+  }
+
+  getCarByFilter(brandId:number,colorId:number){
+    this.carService.getCarByBrandIdAndColorId(brandId,colorId).subscribe(response => {
+      this.cars = response.data;
+      this.dataLoaded=true;
+      if(this.cars.length == 0){
+        this.toastrService.info("Arama sonucunuza ait bir araç bulunamamaktadır.","Arama sonucu")
+      }
+    })
   }
 }
