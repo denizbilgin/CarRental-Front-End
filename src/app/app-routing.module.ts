@@ -10,7 +10,7 @@ const routes: Routes = [
   {path:"",pathMatch:"full",component:CarComponent}, //ana sayfa
   {path:"cars",component:CarComponent},
   {path:"customers",component:CustomerComponent},
-  {path:"rentals",component:RentalComponent},
+  {path:"rental/:carId",component:RentalComponent},
   {path:"cars/brand/:brandId",component:CarComponent},
   {path:"cars/color/:colorId",component:CarComponent},
   {path:"cars/filter/brand/:brandId/color/:colorId",component:CarComponent},

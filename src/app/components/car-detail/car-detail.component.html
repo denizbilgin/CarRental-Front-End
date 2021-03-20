@@ -4,14 +4,15 @@
 <ul>
     <li *ngFor="let image of carImages">
         <img
-         src="{{apiUrl+image.imagePath}}" alt="{{car.carId}}">
+         src="{{apiUrl+image.imagePath}}" alt="">
     </li>
 </ul>
-<ul class="list-group">
+<ul *ngIf="car" class="list-group">
     <li class="list-group-item">Araba Numarası : {{car.carId}}</li>
     <li class="list-group-item">Markası : {{car.brandName}}</li>
     <li class="list-group-item">Rengi : {{car.colorName}}</li>
     <li class="list-group-item">Model Yılı : {{car.modelYear}}</li>
     <li class="list-group-item">Günlük Ücreti : {{car.dailyPrice  |currency}}</li>
     <li class="list-group-item">Açıklaması : {{car.description}}</li>
+    <app-rental></app-rental>
   </ul>

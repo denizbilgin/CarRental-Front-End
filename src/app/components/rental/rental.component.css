@@ -6,3 +6,11 @@ caption{
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
 }
+button{
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.customers{
+    margin-bottom: 20px;
+}
