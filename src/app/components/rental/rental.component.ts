@@ -88,7 +88,7 @@ export class RentalComponent implements OnInit {
       this.rental.carId = this.car.carId;
       this.rental.rentDate = this.rentDate;
       this.rental.returnDate = this.returnDate;
-      //this.rentalService.addRental(this.rental);
+      this.rentalService.addRental(this.rental);
       this.toastr.success("Ödeme sayfasına yönlendiriliyorsunuz.","Kiralama başarılı")
     }
   }
