@@ -9,7 +9,7 @@
         <select [(ngModel)]="currentColor" class="form-select" aria-label="Default select example">
             <option [selected]="IsCurrentColorNull()" [value]=undefined>Bir renk seçiniz</option>
             <option *ngFor="let color of colors" [value]="color.id" [selected]="getCurrentColor(color)">{{color.colorName}}</option>
-          </select>
+        </select>
     </div>
     <div class="col-md-2">
         <button [routerLink]="GetRouterLink()" type="button" class="btn btn-primary">Filtrele</button>

@@ -17,6 +17,7 @@ import { BrandFilterPipe } from './pipes/brand-filter.pipe';
 import { ColorFilterPipe } from './pipes/color-filter.pipe';
 import { ToastrModule } from "ngx-toastr";
 import { CarFilterComponent } from './components/car-filter/car-filter.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { CarFilterComponent } from './components/car-filter/car-filter.component
     BrandFilterPipe,
     ColorFilterPipe,
     CarFilterComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,

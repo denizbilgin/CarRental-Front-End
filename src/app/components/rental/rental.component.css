@@ -14,3 +14,8 @@ button{
 .customers{
     margin-bottom: 20px;
 }
+
+.mybutton{
+    display: inline-block;
+    padding: 10px auto;
+}

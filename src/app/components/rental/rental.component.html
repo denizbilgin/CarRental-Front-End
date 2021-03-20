@@ -1,4 +1,7 @@
-<button data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" class="btn btn-primary">Kirala</button>
+<button style="width: 100%;" *ngIf="rentable" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" class="btn btn-primary">Kirala</button>
+<div style="margin-top: 10px;" *ngIf="!rentable" class="alert alert-danger">
+  Bu araç zaten kiralanmış
+</div>
 <div *ngIf="car" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -43,7 +46,7 @@
               Müşteriler :
             </div>
             <div class="col-md-9">
-              <select #selectCustomer (change)="setCustomerId(selectCustomer.value)" class="form-select" aria-label="Default select example">
+              <select  #selectCustomer (change)="setCustomerId(selectCustomer.value)" class="form-select" aria-label="Default select example">
                 <option selected>Lütfen bir müşteri seçin</option>
                 <option *ngFor="let customer of customers" [value]="customer.id">{{customer.companyName}}</option>
               </select>
@@ -52,7 +55,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
-        <button (click)="addRental()" type="button" class="btn btn-primary">Kirala</button>
+        <button (click)="addRental()" type="button" class="btn btn-primary" data-bs-dismiss="modal">Kirala</button>
       </div>
     </div>
   </div>

@@ -28,14 +28,13 @@ export class RentalComponent implements OnInit {
     firstName:"",
    lastName:"",
    rentDate:new Date(),
-   returnDate:new Date(),
-   id:0       
+   returnDate:new Date()     
   };
   dataLoaded=false;
   rentDate:Date;
   returnDate:Date;
   customerId:number;
-  rentable:boolean=false;
+  rentable:boolean;
   firstDateSelected:boolean= false;
 
   constructor(
@@ -53,12 +52,14 @@ export class RentalComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       if(params["carId"]){
         this.getCarDetail(params["carId"]);
+        this.CheckStatus(params["carId"])
         this.getCustomers();
+        this.getRentalsByCarId(params["carId"])
       }
     })
     this.minDate=this.datePipe.transform(new Date(),"yyyy-MM-dd");
     this.maxDate=this.datePipe.transform(new Date(new Date().setFullYear(new Date().getFullYear() + 1)),"yyyy-MM-dd");
-     this.getRentals()    
+    this.getRentals()    
   }
 
    getRentals(){
@@ -67,6 +68,14 @@ export class RentalComponent implements OnInit {
       this.dataLoaded=true;
     })
     
+  }
+
+  getRentalsByCarId(carId:number){
+    this.rentalService.getRentalsByCarId(carId).subscribe(response => {
+      if (response.data[response.data.length-1]) {
+        this.rental = response.data[response.data.length-1];
+      }
+    })
   }
 
   getCarDetail(carId:number){
@@ -82,23 +91,30 @@ export class RentalComponent implements OnInit {
   }
 
   addRental(){
-    if (this.rentals.filter(x => x.carId == this.car.carId && x.returnDate == null).length > 0) {
-      this.toastr.error("Bu araç zaten kiralanmış","Kiralama başarısız.")
-    }else{
-      this.rental.carId = this.car.carId;
-      this.rental.rentDate = this.rentDate;
-      this.rental.returnDate = this.returnDate;
-      this.rentalService.addRental(this.rental);
-      this.toastr.success("Ödeme sayfasına yönlendiriliyorsunuz.","Kiralama başarılı")
-    }
+    let RentalModel ={
+      customerId:this.customerId,
+      carId:this.car.carId,
+      rentDate:this.rentDate,
+      returnDate:this.returnDate
+    };
+    this.router.navigate(["cars/rental/payment/",JSON.stringify(RentalModel)]);
+    this.toastr.success("Ödeme sayfasına yönlendiriliyorsunuz.","Kiralama başarılı");
   }
 
-  setCustomerId(customerId:any){
-   this.rental.customerId=+customerId;
+  CheckStatus(carId:number){
+    
+    this.carService.getCarDetails(carId).subscribe(response => {
+      this.rentable = response.data[response.data.length-1].status;
+    })
   }
 
   onChangeEvent(event: any){
     this.minDate = event.target.value
     this.firstDateSelected = true
+  }
+
+  setCustomerId(customerId:string){
+    this.customerId = +customerId
+    console.log(this.customerId)
   }
 }
