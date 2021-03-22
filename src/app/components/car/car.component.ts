@@ -19,6 +19,7 @@ export class CarComponent implements OnInit {
   carImageDefault="https://localhost:44373/images/default1.jpg"
   currentCarImage:CarImage;
   dataLoaded=false;
+  filterText="";
   
 
   constructor(
