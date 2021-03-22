@@ -1,7 +1,13 @@
 <div class="car-header">
-    Araba Detayları
+  <div class="row">
+    <div class="col-md-1">
+      <button class="btn btn-primary" routerLink="/cars">Geri</button>
+    </div>
+    <div class="col-md-11 text-center pt-2">
+      Araba Detayları
+    </div>
+  </div>
 </div>
-
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button *ngFor="let image of carImages;let i = index" type="button" data-bs-target="#carouselExampleIndicators" attr.data-bs-slide-to="{{i}}" [class]="getButtonClass(image)" aria-current="true" aria-label="Slide 1"></button>
