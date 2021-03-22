@@ -1,12 +1,25 @@
 <div class="car-header">
     Araba Detayları
 </div>
-<ul>
-    <li *ngFor="let image of carImages">
-        <img
-         src="{{apiUrl+image.imagePath}}" alt="">
-    </li>
-</ul>
+
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button *ngFor="let image of carImages;let i = index" type="button" data-bs-target="#carouselExampleIndicators" attr.data-bs-slide-to="{{i}}" [class]="getButtonClass(image)" aria-current="true" aria-label="Slide 1"></button>
+    </div>
+    <div class="carousel-inner">
+      <div *ngFor="let image of carImages" [class]="getCurrentImageClass(image)">
+        <img src="{{apiUrl+image.imagePath}}" style="width: 100%; height: 600px;" alt="Image" class="d-block ">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+</div>
 <ul *ngIf="car" class="list-group">
     <li class="list-group-item">Araba Numarası : {{car.carId}}</li>
     <li class="list-group-item">Markası : {{car.brandName}}</li>

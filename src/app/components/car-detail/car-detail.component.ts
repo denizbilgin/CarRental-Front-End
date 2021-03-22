@@ -41,4 +41,20 @@ export class CarDetailComponent implements OnInit {
       this.detaLoaded=true;
     })
   }
+
+  getCurrentImageClass(image:CarImage){
+    if (image == this.carImages[0]) {
+      return "carousel-item active"
+    } else {
+      return "carousel-item"
+    }
+  }
+
+  getButtonClass(image:CarImage){
+    if (image == this.carImages[0]) {
+      return "active"
+    } else {
+      return ""
+    }
+  }
 }

@@ -42,7 +42,6 @@ export class CarFilterComponent implements OnInit {
     }else{
       return false;
     }
-    //this.currentBrand=brand.id;
   }
 
   getColors(){
@@ -57,7 +56,6 @@ export class CarFilterComponent implements OnInit {
     }else{
       return false;
     }
-    //this.currentColor=color.id;
   }
 
   IsCurrentColorNull(){

@@ -3,7 +3,7 @@
     <span class="visually-hidden">Loading...</span>
 </div>
 <app-car-filter></app-car-filter>
-<div class="row" *ngIf="dataLoaded==true">
+<div class="row mb-3 mt-2" *ngIf="dataLoaded==true">
     <div *ngFor="let car of cars" class="card" style="width: 17rem;">
         <div>
             <img *ngIf="car.imagePath==null" src="{{carImageDefault}}" alt="{{car.carId}}" style="width: 100%;">
@@ -16,7 +16,7 @@
                 <li class="list-group-item">Günlük Fiyatı: {{car.dailyPrice  |currency}}</li>
             </ul>
             <section style="float:left">
-                <button routerLink="/cars/cardetail/{{car.carId}}" type="button" class="btn btn-primary">Detaylar</button>
+                <button routerLink="/cars/cardetail/{{car.carId}}" type="button" class="btn btn-primary mt-2">Detaylar</button>
             </section>
         </div>
     </div>
