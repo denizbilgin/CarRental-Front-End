@@ -58,8 +58,7 @@ export class RentalComponent implements OnInit {
       }
     })
     this.minDate=this.datePipe.transform(new Date(),"yyyy-MM-dd");
-    this.maxDate=this.datePipe.transform(new Date(new Date().setFullYear(new Date().getFullYear() + 1)),"yyyy-MM-dd");
-    this.getRentals()    
+    this.maxDate=this.datePipe.transform(new Date(new Date().setFullYear(new Date().getFullYear() + 1)),"yyyy-MM-dd");  
   }
 
    getRentals(){
@@ -102,7 +101,6 @@ export class RentalComponent implements OnInit {
   }
 
   CheckStatus(carId:number){
-    
     this.carService.getCarDetails(carId).subscribe(response => {
       this.rentable = response.data[response.data.length-1].status;
     })
@@ -116,5 +114,38 @@ export class RentalComponent implements OnInit {
   setCustomerId(customerId:string){
     this.customerId = +customerId
     console.log(this.customerId)
+  }
+
+  calculatePrice(){
+    if (this.returnDate) {
+      let returnDate = new Date(this.returnDate.toString())
+      let rentDate = new Date(this.rentDate.toString())
+
+      let returnDay = Number.parseInt(returnDate.getDate().toString())
+      let rentDay = Number.parseInt(rentDate.getDate().toString())
+
+      let returnMonth = Number.parseInt(returnDate.getMonth().toString())
+      let rentMonth = Number.parseInt(rentDate.getMonth().toString())
+
+      let returnYear = Number.parseInt(returnDate.getFullYear().toString())
+      let rentYear = Number.parseInt(rentDate.getFullYear().toString())
+
+      let result = ((returnDay-rentDay) + ((returnMonth-rentMonth) * 30) + ((returnYear-rentYear) * 365) + 1 ) * this.car.dailyPrice
+      
+      if (result > 0) {
+        return result;
+      }
+      this.toastr.info("Bu tarihler arasında arabayı kiralayamazsınız","Geçersiz tarih seçimi")
+      return 0
+      
+    }else{
+      return this.car.dailyPrice;
+    }
+  }
+
+  checkReturnDate(){
+    if (this.returnDate < this.rentDate) {
+      this.returnDate = this.rentDate
+    }
   }
 }

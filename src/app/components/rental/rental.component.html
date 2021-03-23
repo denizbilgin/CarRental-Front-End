@@ -26,7 +26,7 @@
               <label for="rent-date" class="form-label">Başlangıç :</label>
             </div>
             <div class="col-md-9">
-              <input (change)="onChangeEvent($event)" min="{{minDate}}" [(ngModel)]="rentDate" type="date" class="form-control" id="rent-date" placeholder="Bir gün seçiniz.">
+              <input (change)="onChangeEvent($event); checkReturnDate()" min="{{minDate}}" [(ngModel)]="rentDate" type="date" class="form-control" id="rent-date" placeholder="Bir gün seçiniz.">
             </div>
           </div>
         </div>
@@ -50,6 +50,14 @@
                 <option selected>Lütfen bir müşteri seçin</option>
                 <option *ngFor="let customer of customers" [value]="customer.id">{{customer.companyName}}</option>
               </select>
+          </div>
+        </div>
+        <div *ngIf="returnDate" class="totalPrice row">
+          <div class="col-md-3 mt-3">
+            Toplam  :
+          </div>
+          <div class="col-md-9">
+            <input type="text" disabled="disabled" [value]="calculatePrice() | currency" class="form-control mt-3">
           </div>
         </div>
       </div>
