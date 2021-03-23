@@ -13,6 +13,7 @@ import { CarService } from 'src/app/services/carService/car.service';
 export class CarDetailComponent implements OnInit {
   carImages:CarImage[];
   car:Car;
+  carId:number;
   detaLoaded=false;
   apiUrl = "https://localhost:44373/images/";
 
@@ -39,6 +40,7 @@ export class CarDetailComponent implements OnInit {
     this.carService.getCarDetails(carId).subscribe(response => {
       this.car=response.data[0];
       this.detaLoaded=true;
+      this.carId = response.data[0].carId
     })
   }
 

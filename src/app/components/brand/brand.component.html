@@ -1,6 +1,8 @@
 <ul class="list-group">
     <div class="mb-3">
-        <label for="filterText" class="form-label">Marka Ara</label>
+        <div>
+            <label style="font-size: 1.3rem;" for="filterText" class="form-label">Marka Ara</label>
+        </div>
         <input [(ngModel)]="filterText" type="text" class="form-control" id="filterText" placeholder="Arama ifadesi giriniz">
     </div>
     <div *ngIf="filterText.length>2" class="alert alert-primary">
