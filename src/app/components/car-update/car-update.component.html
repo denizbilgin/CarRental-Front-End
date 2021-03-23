@@ -40,7 +40,7 @@
     <div class="col-md-4">
         <div *ngIf="car" class="card">
             <div class="card-header" style="text-align: center;">
-                <h5>Aracın Güncel Bilgileri</h5>
+                <h5>Aracın Mevcut Bilgileri</h5>
             </div>
             <div class="card-body">
                 <div class="card-image-top">
@@ -52,7 +52,7 @@
                         <li class="list-group-item"><strong style="float: left;">Markası :</strong>{{car.brandName}}</li>
                         <li class="list-group-item"><strong style="float: left;">Rengi :</strong>{{car.colorName}}</li>
                         <li class="list-group-item"><strong style="float: left;">Modeli :</strong>{{car.modelYear}}</li>
-                        <li class="list-group-item"><strong style="float: left;">Günlük Ücreti :</strong>{{car.dailyPrice}}</li>
+                        <li class="list-group-item"><strong style="float: left;">Günlük Ücreti :</strong>{{car.dailyPrice |currency}}</li>
                         <li class="list-group-item"><strong style="float: left;">Açıklaması :</strong>{{car.description}}</li>
                       </ul>
                 </div>
