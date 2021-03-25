@@ -1,0 +1,67 @@
+<div class="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header" style="text-align: center;">
+                <h5>Araba Ekle</h5>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="carAddForm">
+                    <div class="brandId-Add mb-3">
+                        <div>
+                            <label for="brandId">Marka :</label>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-select" aria-label="Default select example" formControlName="brandId">
+                                <option selected>Bir marka seçiniz</option>
+                                <option *ngFor="let brand of brands" [ngValue]="brand.id">{{brand.brandName}}</option>
+                              </select>
+                        </div>
+                    </div>
+                    <div class="colorId-Add mb-3">
+                        <div>
+                            <label for="colorId">Renk Numarası :</label>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-select" aria-label="Default select example" formControlName="colorId">
+                                <option selected>Bir renk seçiniz</option>
+                                <option *ngFor="let color of colors" [ngValue]="color.id">{{color.colorName}}</option>
+                              </select>
+                        </div>
+                    </div>
+                    <div class="modelYear-Add mb-3">
+                        <div>
+                            <label for="modelYear">Model Yılı :</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" id="modelYear" formControlName="modelYear" class="form-control">
+                        </div>
+                    </div>
+                    <div class="dailyPrice-Add mb-3">
+                        <div>
+                            <label for="dailyPrice">Günlük Ücreti :</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" id="dailyPrice" formControlName="dailyPrice" class="form-control">
+                        </div>
+                    </div>
+                    <div class="description-Add mb-3">
+                        <div>
+                            <label for="description">Açıklaması :</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="description" formControlName="description" class="form-control">
+                        </div>
+                    </div>
+                </form>
+                <form [formGroup]="imageAddForm">
+                    <div class="form-group">
+                        <input formControlName="file" type="file" (change)="uploadFile($event)">
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <button style="width: 100%;" class="btn btn-fill btn-primary" (click)="add()">Ekle</button>
+            </div>
+        </div>
+    </div>
+</div>

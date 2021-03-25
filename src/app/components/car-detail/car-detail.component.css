@@ -1,0 +1,33 @@
+img{
+    height: 60%;
+    width: 60%;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+}
+
+ul{
+    text-align: center;
+}
+
+li{
+    list-style: none;
+}
+
+.car-header{
+    background-color: #0D4BFD;
+    color: white;
+    display: block;
+    text-align: center;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    padding: 9px;
+    margin-bottom: 1rem;
+}
+
+.list-group{
+    margin-bottom: 1rem;
+}
+
+.text-center{
+    text-align: center;
+}
