@@ -94,7 +94,7 @@ export class CarAddComponent implements OnInit {
     if (this.imageAddForm.valid) {
       this.carImageService.add(this.savedCarId,this.imageFile).subscribe(response => {
         this.toastrService.success("Resim eklendi","Başarılı")
-      })
+      }) 
     }
   }
 }
