@@ -31,6 +31,11 @@
                         <input type="text" id="description" formControlName="description" class="form-control">
                     </div>
                 </form>
+                <form [formGroup]="imageUpdateForm" *ngIf="car">
+                    <div class="form-group">
+                        <input type="file" formControlName="file" (change)="uploadFile($event)">
+                    </div>
+                </form>
             </div>
             <div class="card-footer">
                 <button style="width: 100%;" class="btn btn-fill btn-primary" (click)="update()">Güncelle</button>

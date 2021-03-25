@@ -18,6 +18,8 @@ import { ColorService } from 'src/app/services/colorService/color.service';
 })
 export class CarUpdateComponent implements OnInit {
   carUpdateForm:FormGroup;
+  imageUpdateForm:FormGroup;
+  imageId:number;
   car:Car
   brands:Brand[];
   colors:Color[];
@@ -25,6 +27,7 @@ export class CarUpdateComponent implements OnInit {
   carImages:CarImage[];
   apiUrl = "https://localhost:44373/images/";
   carImageDefault="https://localhost:44373/images/default1.jpg"
+  imageFile:File;
 
   constructor(
     private formBuilder:FormBuilder,
@@ -40,17 +43,19 @@ export class CarUpdateComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       if (params["carId"]) {
         this.carId = parseInt(params["carId"])
-        this.getCarDetails(this.carId)
         this.getBrands();
         this.getColors();
+        this.getCarDetails(this.carId)
         this.createCarUpdateForm();
+        this.createImageUpdateForm();
+        this.getCarImagesByCarId();
       }
     })
   }
 
   createCarUpdateForm(){
     this.carUpdateForm = this.formBuilder.group({
-      id:[this.carId],
+      carId:[this.carId],
       brandId:["",Validators.required],
       colorId:["",Validators.required],
       modelYear:["",Validators.required],
@@ -66,6 +71,7 @@ export class CarUpdateComponent implements OnInit {
       console.log(carModel.id)
       this.carService.update(carModel).subscribe(response => {
         this.toastrService.success(response.message,"Başarılı")
+        this.updateImage();
       },responseError => {
         if (responseError.error.ValidationErrors.length>0) {
           for (let i = 0; i < responseError.error.ValidationErrors.length; i++) {
@@ -81,6 +87,11 @@ export class CarUpdateComponent implements OnInit {
   getCarDetails(carId:number){
     this.carService.getCarDetails(carId).subscribe(response => {
       this.car = response.data[0];
+      this.carUpdateForm.patchValue({
+        modelYear:this.car.modelYear,
+        description:this.car.description,
+        dailyPrice:this.car.dailyPrice
+      })
     })
   }
 
@@ -94,5 +105,32 @@ export class CarUpdateComponent implements OnInit {
     this.colorService.getColors().subscribe(response => {
       this.colors=response.data;
     })
+  }
+
+  createImageUpdateForm(){
+    this.imageUpdateForm = this.formBuilder.group({
+      carId:[this.carId],
+      file:["",Validators.required]
+    })
+  }
+
+  uploadFile(event:any){
+    this.imageFile = event.target.files[0]
+  }
+
+  getCarImagesByCarId(){
+    this.carImageService.getCarImagesByCarId(this.carId).subscribe(response => {
+      this.imageId = response.data[0].id;
+    })
+  }
+
+  updateImage(){
+    console.log(this.carId)
+    console.log(this.imageFile)
+    if (this.imageUpdateForm.valid) {
+      this.carImageService.update(this.carId,this.imageFile,this.imageId).subscribe(response => {
+        this.toastrService.success(response.message,"Başarılı")
+      })
+    }
   }
 }
