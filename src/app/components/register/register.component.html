@@ -40,10 +40,13 @@
     
         <div class="checkbox mb-3">
           <label>
-            <input type="checkbox" value="remember-me"> Remember me
+            <input type="checkbox" value="remember-me"> Beni hatırla
           </label>
         </div>
         <button class="w-100 btn btn-lg btn-primary" (click)="register()">Üye Ol</button>
+        <div class="mt-3">
+          Zaten üye misiniz ? <a routerLink="/login" class="card-link">Giriş Yap</a>
+        </div>
       </form>
     </main> 
 </body>
