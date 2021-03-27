@@ -19,3 +19,15 @@ button{
     display: inline-block;
     padding: 10px auto;
 }
+
+.mybtn{
+    border-radius: 6px;
+    color: whitesmoke;
+    height: 100%;
+    background-color: #046e8f;
+    border: none;
+}
+.mybtn:hover{
+    border-radius: 6px;
+    background-color: #0090c1;
+}

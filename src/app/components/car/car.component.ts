@@ -6,6 +6,7 @@ import { CarImageService } from 'src/app/services/carImageService/car-image.serv
 import { CarService } from 'src/app/services/carService/car.service';
 import { tap } from "rxjs/operators" 
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/services/authService/auth.service';
 
 @Component({
   selector: 'app-car',

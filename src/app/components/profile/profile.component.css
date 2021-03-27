@@ -1,6 +1,7 @@
 .card-header{
     background-color: #045f7a;
-    color: white;
+    color: whitesmoke;
+    text-align: center;
 }
 
 .mybtn{
@@ -9,8 +10,8 @@
     height: 100%;
     background-color: #046e8f;
     border: none;
-}
-.mybtn:hover{
+  }
+  .mybtn:hover{
     border-radius: 6px;
     background-color: #0090c1;
-}
+  }

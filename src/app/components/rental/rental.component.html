@@ -1,4 +1,4 @@
-<button style="width: 100%;" *ngIf="rentable" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" class="btn btn-primary">Kirala</button>
+<button style="width: 100%;" *ngIf="rentable" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" class="mybtn btn btn-primary">Kirala</button>
 <div style="margin-top: 10px;" *ngIf="!rentable" class="alert alert-danger">
   Bu araç zaten kiralanmış
 </div>
@@ -62,8 +62,8 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
-        <button (click)="addRental()" type="button" class="btn btn-primary" data-bs-dismiss="modal">Kirala</button>
+        <button style="border-radius: 6px;" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+        <button (click)="addRental()" type="button" class="mybtn btn btn-primary" data-bs-dismiss="modal">Kirala</button>
       </div>
     </div>
   </div>

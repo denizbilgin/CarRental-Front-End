@@ -15,7 +15,7 @@ li{
 }
 
 .car-header{
-    background-color: #0D4BFD;
+    background-color: #045f7a;
     color: white;
     display: block;
     text-align: center;
@@ -31,4 +31,16 @@ li{
 
 .text-center{
     text-align: center;
+}
+
+.mybtn{
+    border-radius: 6px;
+    color: whitesmoke;
+    height: 100%;
+    background-color: #046e8f;
+    border: none;
+}
+.mybtn:hover{
+    border-radius: 6px;
+    background-color: #0090c1;
 }

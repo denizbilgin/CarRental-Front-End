@@ -2,13 +2,13 @@
 <div class="car-header">
   <div class="row">
     <div class="col-md-1">
-      <button class="btn btn-primary" routerLink="/cars">Geri</button>
+      <button class="btn btn-primary mybtn" routerLink="/cars">Geri</button>
     </div>
     <div class="col-md-10 text-center pt-2">
       Araba Detayları
     </div>
     <div class="col-md-1">
-      <button style="float: right;" class="btn btn-primary" routerLink="/cars/update/{{carId}}">Güncelle</button>
+      <button style="float: right;" *ngIf="isAuthenticated()" class="btn btn-primary mybtn" routerLink="/cars/update/{{carId}}">Güncelle</button>
     </div>
   </div>
 </div>

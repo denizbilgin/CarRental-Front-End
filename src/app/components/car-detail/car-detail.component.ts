@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Car } from 'src/app/models/car';
 import { CarImage } from 'src/app/models/carImage';
+import { AuthService } from 'src/app/services/authService/auth.service';
 import { CarImageService } from 'src/app/services/carImageService/car-image.service';
 import { CarService } from 'src/app/services/carService/car.service';
 
@@ -18,7 +19,7 @@ export class CarDetailComponent implements OnInit {
   apiUrl = "https://localhost:44373/images/";
 
 
-  constructor(private activatedRoute:ActivatedRoute,private carImageService:CarImageService,private carService:CarService) { }
+  constructor(private activatedRoute:ActivatedRoute,private carImageService:CarImageService,private carService:CarService,private authService:AuthService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
@@ -58,5 +59,9 @@ export class CarDetailComponent implements OnInit {
     } else {
       return ""
     }
+  }
+
+  isAuthenticated(){
+    return this.authService.isAuthenticated();
   }
 }
