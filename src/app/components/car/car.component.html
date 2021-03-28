@@ -32,16 +32,18 @@
         <div
           *ngFor="let car of cars | carFilterPipe: filterText"
           class="card"
-          style="width: 16rem"
+          style="width: 16rem; border-radius: 11px;"
         >
           <div>
             <img
+              class="card-img-top"
               *ngIf="car.imagePath == null"
               src="{{ carImageDefault }}"
               alt="{{ car.carId }}"
-              style="width: 100%"
+              style="width: 100%;"
             />
             <img
+              class="card-img-top"
               *ngIf="car.imagePath != null"
               src="{{ apiUrl + car.imagePath }}"
               alt="{{ car.carId }}"

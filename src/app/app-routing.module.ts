@@ -13,6 +13,7 @@ import { PaymentComponent } from './components/payment/payment.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
 import { RentalComponent } from './components/rental/rental.component';
+import { UserCardsComponent } from './components/user-cards/user-cards.component';
 import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
@@ -33,7 +34,8 @@ const routes: Routes = [
   {path:"cars/update/:carId",component:CarUpdateComponent,canActivate:[LoginGuard]},
   {path:"login",component:LoginComponent},
   {path:"register",component:RegisterComponent},
-  {path:"profile",component:ProfileComponent,canActivate:[LoginGuard]}
+  {path:"profile",component:ProfileComponent,canActivate:[LoginGuard]},
+  {path:"cards",component:UserCardsComponent,canActivate:[LoginGuard]}
 ];
 
 @NgModule({

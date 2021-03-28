@@ -27,12 +27,14 @@
         <div *ngIf="isAuthenticated()">
           <div class="nav-item dropdown">
             <a style="color: whitesmoke;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i style="margin-right: 10px;" class="fas fa-user-circle"></i><strong>{{user.firstName}} {{user.lastName}}</strong>
+              <i style="margin-right: 10px;" class="fas fa-user-circle"></i><strong *ngIf="user">{{user.firstName}} {{user.lastName}}</strong>
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" routerLink="profile"><i class="fas fa-users-cog"></i> Profil</a></li>
+              <li><a class="dropdown-item" routerLink="profile"><i style="margin-right: 10px;" class="fas fa-users-cog"></i> Profil</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" (click)="logOut()"><i class="fas fa-sign-out-alt"></i> Çıkış</a></li>
+              <li><a class="dropdown-item" routerLink="cards"><i style="margin-right: 10px;" class="fas fa-credit-card"></i>Kredi Kartlarım</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" (click)="logOut()"><i style="margin-right: 10px;" class="fas fa-sign-out-alt"></i> Çıkış</a></li>
             </ul>
           </div>
         </div>
