@@ -19,3 +19,9 @@ button{
     border-radius: 6px;
     background-color: #0090c1;
 }
+
+.logo{
+    color: whitesmoke;
+    font-size: 2rem;
+    margin-right: 10px;
+}

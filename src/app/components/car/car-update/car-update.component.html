@@ -30,6 +30,10 @@
                         <label class="col-form-label">Açıklaması:</label>
                         <input type="text" id="description" formControlName="description" class="form-control">
                     </div>
+                    <div class="form-group mb-3">
+                        <label class="col-form-label">Minimum Findex Puanı:</label>
+                        <input type="number" id="minFindex" formControlName="minFindex" class="form-control">
+                    </div>
                 </form>
                 <form [formGroup]="imageUpdateForm" *ngIf="car">
                     <div class="form-group">
@@ -59,6 +63,7 @@
                         <li class="list-group-item"><strong style="float: left;">Modeli :</strong>{{car.modelYear}}</li>
                         <li class="list-group-item"><strong style="float: left;">Günlük Ücreti :</strong>{{car.dailyPrice |currency}}</li>
                         <li class="list-group-item"><strong style="float: left;">Açıklaması :</strong>{{car.description}}</li>
+                        <li class="list-group-item"><strong style="float: left;">Findex :</strong>{{car.minFindex}}</li>
                       </ul>
                 </div>
             </div>

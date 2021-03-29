@@ -17,15 +17,13 @@
     
     <main class="form-signin">
       <form [formGroup]="registerForm">
-        <h1 class="h3 mb-3 fw-normal">Üye Ol</h1>
-        <!-- <img class="mb-4" src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
-    
+        <h1 class="h3 mb-3 fw-normal"><strong>Üye Ol</strong></h1>
         <div class="form-floating">
-          <input formControlName="firstName" type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <input formControlName="firstName" type="text" class="form-control" id="floatingInput" placeholder="name@example.com" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0;">
           <label for="floatingInput">Ad</label>
         </div>
         <div class="form-floating">
-            <input formControlName="lastName" type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <input formControlName="lastName" type="text" class="form-control" id="floatingInput" placeholder="name@example.com" style="border-top-left-radius: 0; border-top-right-radius: 0;">
             <label for="floatingInput">Soyad</label>
         </div>
         <br>
@@ -38,7 +36,7 @@
           <label for="floatingPassword">Parola</label>
         </div>
     
-        <div class="checkbox mb-3">
+        <div class="checkbox mb-3" style="float: left;">
           <label>
             <input type="checkbox" value="remember-me"> Beni hatırla
           </label>
@@ -48,5 +46,6 @@
           Zaten üye misiniz ? <a routerLink="/login" class="card-link">Giriş Yap</a>
         </div>
       </form>
-    </main> 
+    </main>
+    <img src="https://blog.bufilo.com/wp-content/uploads/2020/09/Aylik-Arac-Kiralama-Fiyatlari-bufilo.com_-791x445.png" alt="Banner">
 </body>

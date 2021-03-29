@@ -16,3 +16,11 @@
     background-color: #0090c1;
   }
 
+input{
+  border-left-color: #0090c1;
+  border-left-width: 7px;
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+}
+

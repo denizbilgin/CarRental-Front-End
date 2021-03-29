@@ -13,7 +13,7 @@
   </div>
 </div>
 <div class="row">
-  <div style="width: 50%; height: 320px;" id="carouselExampleIndicators" class="carousel slide col-md-6" data-bs-ride="carousel">
+  <div style="width: 50%; height: 320px; margin-top: 20px;" id="carouselExampleIndicators" class="carousel slide col-md-6" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button *ngFor="let image of carImages;let i = index" type="button" data-bs-target="#carouselExampleIndicators" attr.data-bs-slide-to="{{i}}" [class]="getButtonClass(image)" aria-current="true" aria-label="Slide 1"></button>
     </div>
@@ -38,6 +38,7 @@
     <li class="list-group-item">Model Yılı : {{car.modelYear}}</li>
     <li class="list-group-item">Günlük Ücreti : {{car.dailyPrice  |currency}}</li>
     <li class="list-group-item">Açıklaması : {{car.description}}</li>
+    <li class="list-group-item">Findex : {{car.minFindex}}</li>
     <app-rental></app-rental>
   </ul>
 </div>
