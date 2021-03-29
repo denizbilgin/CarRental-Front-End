@@ -44,7 +44,8 @@ export class CarAddComponent implements OnInit {
       colorId:["",Validators.required],
       modelYear:["",Validators.required],
       dailyPrice:["",Validators.required],
-      description:["",Validators.required]
+      description:["",Validators.required],
+      minFindex:["",Validators.required]
     })
   }
 

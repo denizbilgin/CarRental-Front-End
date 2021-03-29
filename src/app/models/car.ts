@@ -7,4 +7,5 @@ export interface Car{
     description:string;
     imagePath:string;
     status:boolean;
+    minFindex:number;
 }

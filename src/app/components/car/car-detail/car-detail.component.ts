@@ -5,6 +5,7 @@ import { CarImage } from 'src/app/models/carImage';
 import { AuthService } from 'src/app/services/authService/auth.service';
 import { CarImageService } from 'src/app/services/carImageService/car-image.service';
 import { CarService } from 'src/app/services/carService/car.service';
+import { UserService } from 'src/app/services/userService/user.service';
 
 @Component({
   selector: 'app-car-detail',
@@ -19,7 +20,13 @@ export class CarDetailComponent implements OnInit {
   apiUrl = "https://localhost:44373/images/";
 
 
-  constructor(private activatedRoute:ActivatedRoute,private carImageService:CarImageService,private carService:CarService,private authService:AuthService) { }
+  constructor(
+    private activatedRoute:ActivatedRoute,
+    private carImageService:CarImageService,
+    private carService:CarService,
+    private authService:AuthService,
+    private userService:UserService
+    ) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
@@ -64,4 +71,6 @@ export class CarDetailComponent implements OnInit {
   isAuthenticated(){
     return this.authService.isAuthenticated();
   }
+
+
 }

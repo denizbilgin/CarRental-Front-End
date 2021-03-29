@@ -17,6 +17,7 @@ export class ProfileComponent implements OnInit {
   customerUpdateForm:FormGroup;
   user:UserModel;
   customer:Customer;
+  findex:number;
 
   constructor(
     private authService:AuthService,
@@ -31,6 +32,7 @@ export class ProfileComponent implements OnInit {
     this.createCustomerUpdateForm();
     this.getUser();
     this.getCustomer();
+    this.getUserFindex();
   }
 
   createUserUpdateForm(){
@@ -85,6 +87,13 @@ export class ProfileComponent implements OnInit {
     }else{
       this.toastrService.error("Lütfen formu tamamen doldurunuz","Hata")
     }
+  }
+
+  getUserFindex(){
+    this.userService.getUserFindexByUserId(this.authService.getUserId()).subscribe(response => {
+      this.findex = response.data.findex;
+      console.log(response.data.findex)
+    })
   }
 
 }

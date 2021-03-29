@@ -7,6 +7,7 @@ import { PaymentService } from 'src/app/services/paymentService/payment.service'
 import { RentalService } from 'src/app/services/rentalService/rental.service';
 import { FormGroup, FormBuilder, FormControl, Validators } from "@angular/forms"
 import { CardDetailService } from 'src/app/services/cardDetailService/card-detail.service';
+import { UserService } from 'src/app/services/userService/user.service';
 
 @Component({
   selector: 'app-payment',
@@ -26,7 +27,8 @@ export class PaymentComponent implements OnInit {
     private authService:AuthService,
     private toastrService:ToastrService,
     private formBuilder:FormBuilder,
-    private cardDetailService:CardDetailService
+    private cardDetailService:CardDetailService,
+    private userService:UserService
   ) { }
 
   ngOnInit(): void {
@@ -77,8 +79,15 @@ export class PaymentComponent implements OnInit {
     this.paymentService.checkPayment(checkPaymentModel).subscribe(response => {
         this.toastrService.success(response.message,"Başarılı")
         this.addRental();
+        this.updateUserFindex();
     },responseError => {
       this.toastrService.error(responseError.error,"Hata");
+    })
+  }
+  
+  updateUserFindex(){
+    this.userService.updateUserFindex(this.authService.getUserId()).subscribe(response => {
+      this.toastrService.info(response.message,"Bilgi")
     })
   }
 }

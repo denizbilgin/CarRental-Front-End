@@ -39,6 +39,9 @@ export class LoginComponent implements OnInit {
         this.localStorageService.add("token",response.data.token);
         this.toastrService.success(response.message,"Başarılı");
         this.router.navigate(["/cars"])
+        setTimeout(function () {
+          location.reload();
+        });
       },responseError => {
         if (responseError.error.length>0 && responseError.error) {
           this.toastrService.error(responseError.error,"Hata")

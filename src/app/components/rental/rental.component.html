@@ -1,6 +1,11 @@
-<button style="width: 100%;" *ngIf="rentable" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" class="mybtn btn btn-primary">Kirala</button>
-<div style="margin-top: 10px;" *ngIf="!rentable" class="alert alert-danger">
-  Bu araç zaten kiralanmış
+<div class="findex-control" *ngIf="car.minFindex<=userFindex">
+  <button style="width: 100%;" *ngIf="rentable" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" class="mybtn btn btn-primary">Kirala</button>
+  <div style="margin-top: 10px;" *ngIf="!rentable" class="alert alert-danger">
+    Bu araç zaten kiralanmış
+  </div>
+</div>
+<div style="margin-top: 10px;" *ngIf="car.minFindex>userFindex" class="alert alert-danger">
+  Findex puanınız bu aracı kiralamaya yetmiyor
 </div>
 <div *ngIf="car" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">

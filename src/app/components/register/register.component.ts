@@ -42,6 +42,9 @@ export class RegisterComponent implements OnInit {
         this.localStorageService.add("token",response.data.token);
         this.toastrService.success(response.message,"Başarılı")
         this.router.navigate(["/cars"])
+        setTimeout(function () {
+          location.reload();
+        });
       },responseError => {
         this.toastrService.error(responseError.error,"Hata")
       })

@@ -8,6 +8,8 @@ import { CustomerService } from 'src/app/services/customerService/customer.servi
 import { RentalService } from 'src/app/services/rentalService/rental.service';
 import { DatePipe } from "@angular/common"
 import { ToastrService } from 'ngx-toastr';
+import { UserService } from 'src/app/services/userService/user.service';
+import { AuthService } from 'src/app/services/authService/auth.service';
 
 @Component({
   selector: 'app-rental',
@@ -35,6 +37,7 @@ export class RentalComponent implements OnInit {
   returnDate:Date;
   customerId:number;
   rentable:boolean;
+  userFindex:number;
   firstDateSelected:boolean= false;
 
   constructor(
@@ -44,7 +47,9 @@ export class RentalComponent implements OnInit {
     private customerService:CustomerService,
     private router:Router,
     private datePipe:DatePipe,
-    private toastr:ToastrService
+    private toastr:ToastrService,
+    private userService:UserService,
+    private authService:AuthService
     ) { }
 
 
@@ -55,6 +60,7 @@ export class RentalComponent implements OnInit {
         this.CheckStatus(params["carId"])
         this.getCustomers();
         this.getRentalsByCarId(params["carId"])
+        this.getUserFindex();
       }
     })
     this.minDate=this.datePipe.transform(new Date(),"yyyy-MM-dd");
@@ -147,5 +153,11 @@ export class RentalComponent implements OnInit {
     if (this.returnDate < this.rentDate) {
       this.returnDate = this.rentDate
     }
+  }
+
+  getUserFindex(){
+    this.userService.getUserFindexByUserId(this.authService.getUserId()).subscribe(response => {
+      this.userFindex = response.data.findex;
+    })
   }
 }
