@@ -29,6 +29,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { UserCardsComponent } from './components/user-cards/user-cards.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { UserCardsComponent } from './components/user-cards/user-cards.component
     ProfileComponent,
     ChangePasswordComponent,
     UserCardsComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

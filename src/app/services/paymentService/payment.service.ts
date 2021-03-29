@@ -16,4 +16,9 @@ export class PaymentService {
     let newPath = this.apiUrl + "payments/add";
     return this.httpClient.post<ResponseModel>(newPath,payment);
   }
+
+  checkPayment(payment:Payment):Observable<ResponseModel>{
+    let newPath = this.apiUrl + "payments/checkpayment";
+    return this.httpClient.post<ResponseModel>(newPath,payment);
+  }
 }

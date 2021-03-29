@@ -60,11 +60,6 @@ export class PaymentComponent implements OnInit {
   addRental(){
     if (this.rentalAddForm.valid) {
       let addRentalModel = Object.assign({},this.rentalAddForm.value)
-      this.paymentService.addPayment(addRentalModel).subscribe(response => {
-        this.toastrService.success(response.message,"Başarılı")
-      },responseError => {
-        this.toastrService.error(responseError.error,"Hata")
-      })
       this.rentalService.addRental(this.rental).subscribe(response => {
         this.toastrService.success(response.message,"Başarılı")
         this.CardSave();
@@ -75,5 +70,15 @@ export class PaymentComponent implements OnInit {
     }else{
       this.toastrService.error("Formu eksiksiz doldurunuz.","Başarılı")
     }
+  }
+
+  checkPayment(){
+    let checkPaymentModel = Object.assign({},this.rentalAddForm.value)
+    this.paymentService.checkPayment(checkPaymentModel).subscribe(response => {
+        this.toastrService.success(response.message,"Başarılı")
+        this.addRental();
+    },responseError => {
+      this.toastrService.error(responseError.error,"Hata");
+    })
   }
 }
