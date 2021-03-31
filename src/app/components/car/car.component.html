@@ -36,24 +36,24 @@
           <div class="min-findex">
             Findex : {{car.minFindex}}
           </div>
-          <div>
-            <img
-              class="card-img-top"
-              *ngIf="car.imagePath == null"
-              src="{{ carImageDefault }}"
-              alt="{{ car.carId }}"
-              style="width: 100%;"
-            />
-            <img
-              class="card-img-top"
-              *ngIf="car.imagePath != null"
-              src="{{ apiUrl + car.imagePath }}"
-              alt="{{ car.carId }}"
-              style="width: 100%"
-            />
-          </div>
           <div class="card-body">
-            <ul class="list-group list-group-flush">
+            <div class="image">
+              <img
+                class="card-img-top"
+                *ngIf="car.imagePath == null"
+                src="{{ carImageDefault }}"
+                alt="{{ car.carId }}"
+                style="width: 100%;"
+              />
+              <img
+                class="card-img-top"
+                *ngIf="car.imagePath != null"
+                src="{{ apiUrl + car.imagePath }}"
+                alt="{{ car.carId }}"
+                style="width: 100%"
+              />
+            <div class="card-info">
+              <ul class="list-group list-group-flush">
               <li class="list-group-item">Marka: {{ car.brandName }}</li>
               <li class="list-group-item">Model Yılı: {{ car.modelYear }}</li>
               <li class="list-group-item">

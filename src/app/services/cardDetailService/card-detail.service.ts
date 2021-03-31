@@ -25,4 +25,9 @@ export class CardDetailService {
     let newPath = this.apiUrl + "carddetails/getcardsbyuserid?userId=" + userId;
     return this.httpClient.get<ListResponseModel<CardModel>>(newPath);
   }
+
+  deleteCard(cardModel:CardModel):Observable<ResponseModel>{
+    let newPath = this.apiUrl + "carddetails/delete";
+    return this.httpClient.post<ResponseModel>(newPath,cardModel);
+  }
 }

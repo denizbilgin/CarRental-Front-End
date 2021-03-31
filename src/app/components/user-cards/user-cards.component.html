@@ -3,6 +3,7 @@
 </caption>
 <div class="cards row">
   <div *ngFor="let card of cards" class="col-md-4" style="margin-left: 10px">
+    <button class="delete-button" (click)="deleteCard(card)"><i class="fas fa-trash-alt"></i></button>
     <div class="card" style="border-radius: 15px; width: 400px; height: 235px;">
       <div class="card-body">
         <ul class="list-group list-group-flush">

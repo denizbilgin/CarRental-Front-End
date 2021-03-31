@@ -10,6 +10,7 @@ import { DatePipe } from "@angular/common"
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/services/userService/user.service';
 import { AuthService } from 'src/app/services/authService/auth.service';
+import { UserModel } from 'src/app/models/userModel';
 
 @Component({
   selector: 'app-rental',

@@ -5,6 +5,7 @@ import { ListResponseModel } from 'src/app/models/listResponseModel';
 import { Customer } from 'src/app/models/customer';
 import { SingleResponseModel } from 'src/app/models/singleResponseModel';
 import { ResponseModel } from 'src/app/models/responseModel';
+import { CustomerAddModel } from 'src/app/models/customerAddModel';
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +28,10 @@ export class CustomerService {
   update(customer:Customer):Observable<ResponseModel>{
     let newPath = this.apiUrl + "customers/update";
     return this.httpClient.post<ResponseModel>(newPath,customer);
+  }
+
+  add(customer:CustomerAddModel):Observable<SingleResponseModel<Customer>>{
+    let newPath = this.apiUrl + "customers/add";
+    return this.httpClient.post<SingleResponseModel<Customer>>(newPath,customer);
   }
 }

@@ -8,6 +8,7 @@ import { CarUpdateComponent } from './components/car/car-update/car-update.compo
 import { CarComponent } from './components/car/car.component';
 import { ColorAddComponent } from './components/color/color-add/color-add.component';
 import { CustomerComponent } from './components/customer/customer.component';
+import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -17,7 +18,8 @@ import { UserCardsComponent } from './components/user-cards/user-cards.component
 import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
-  {path:"",pathMatch:"full",component:CarComponent}, //ana sayfa
+  {path:"home",component:HomeComponent},  //ana sayfa
+  {path:"",pathMatch:"full",component:CarComponent}, 
   {path:"cars",component:CarComponent},
   {path:"customers",component:CustomerComponent,canActivate:[LoginGuard]},
   {path:"rental/:carId",component:RentalComponent,canActivate:[LoginGuard]},

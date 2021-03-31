@@ -30,6 +30,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { UserCardsComponent } from './components/user-cards/user-cards.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { FooterComponent } from './components/footer/footer.component';
     ChangePasswordComponent,
     UserCardsComponent,
     FooterComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
