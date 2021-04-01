@@ -19,7 +19,7 @@ export class CarAddComponent implements OnInit {
   brands:Brand[];
   colors:Color[];
   imageAddForm:FormGroup;
-  imageFile:File
+  imageFiles:File[];
   savedCarId:number;
 
   constructor(
@@ -56,6 +56,7 @@ export class CarAddComponent implements OnInit {
         this.toastrService.success(response.message,"Başarılı")
         this.savedCarId = response.data.carId;
         this.addImage()
+        this.toastrService.success("Resim(ler) ekledi.","Başarılı")
       },responseError => {
         if (responseError.error.ValidationErrors.length>0) {
           for (let i = 0; i < responseError.error.ValidationErrors.length; i++) {
@@ -88,14 +89,15 @@ export class CarAddComponent implements OnInit {
   }
 
   uploadFile(event:any){
-    this.imageFile = event.target.files[0]
+    this.imageFiles = event.target.files;
   }
 
   addImage(){
     if (this.imageAddForm.valid) {
-      this.carImageService.add(this.savedCarId,this.imageFile).subscribe(response => {
-        this.toastrService.success(response.message,"Başarılı")
-      }) 
+      for (let i = 0; i < this.imageFiles.length; i++) {
+        this.carImageService.add(this.savedCarId,this.imageFiles[i]).subscribe(response => {
+        }) 
+      }
     }
   }
 }
