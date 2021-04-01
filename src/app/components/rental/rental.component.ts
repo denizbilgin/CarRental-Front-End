@@ -161,4 +161,8 @@ export class RentalComponent implements OnInit {
       this.userFindex = response.data.findex;
     })
   }
+
+  isAuthenticated(){
+    return this.authService.isAuthenticated();
+  }
 }

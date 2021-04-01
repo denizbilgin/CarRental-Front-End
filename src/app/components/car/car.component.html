@@ -33,7 +33,7 @@
           class="card"
           style="width: 16rem; border-radius: 11px;"
         >
-          <div class="min-findex">
+          <div class="min-findex" style="margin-left: 6px;">
             Findex : {{car.minFindex}}
           </div>
           <div class="card-body">
@@ -57,21 +57,24 @@
               <li class="list-group-item">Marka: {{ car.brandName }}</li>
               <li class="list-group-item">Model Yılı: {{ car.modelYear }}</li>
               <li class="list-group-item">
-                Günlük Fiyatı: {{ car.dailyPrice | currency }}
+                Günlük Fiyatı: {{ car.dailyPrice | currency}}
               </li>
             </ul>
-            <section style="float: left">
-              <button
-                routerLink="/cars/cardetail/{{ car.carId }}"
-                type="button"
-                class="btn btn-primary mt-2 mybtn"
-              >
-                Detaylar
-              </button>
-            </section>
           </div>
         </div>
+        
       </div>
+      <section style="float: left">
+        <button
+          style="width: 100%;     border-top-left-radius: 0;
+          border-top-right-radius: 0;"
+          routerLink="/cars/cardetail/{{ car.carId }}"
+          type="button"
+          class="btn btn-primary mt-2 mybtn"
+        >
+          Detaylar
+        </button>
+      </section>
     </div>
   </div>
 </div>

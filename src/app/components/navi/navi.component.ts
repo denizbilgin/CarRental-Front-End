@@ -39,5 +39,8 @@ export class NaviComponent implements OnInit {
   logOut(){
     this.localStorageService.clear();
     this.router.navigate(["/cars"])
+    setTimeout(function () {
+      location.reload();
+    });
   }
 }

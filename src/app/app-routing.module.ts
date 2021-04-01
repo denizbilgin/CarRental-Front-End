@@ -19,7 +19,7 @@ import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
   {path:"home",component:HomeComponent},  //ana sayfa
-  {path:"",pathMatch:"full",component:CarComponent}, 
+  {path:"",pathMatch:"full",component:HomeComponent}, 
   {path:"cars",component:CarComponent},
   {path:"customers",component:CustomerComponent,canActivate:[LoginGuard]},
   {path:"rental/:carId",component:RentalComponent,canActivate:[LoginGuard]},

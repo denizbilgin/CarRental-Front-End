@@ -53,6 +53,13 @@ body {
   }
   /* rtl:end:ignore */
   
+  .my-img:hover{
+    opacity: 0.6;
+  } 
+
+  img{
+    border-radius: 5px;
+  }
   
   /* Featurettes
   ------------------------- */

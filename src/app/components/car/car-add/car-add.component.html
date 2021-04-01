@@ -63,7 +63,7 @@
                 </form>
                 <form [formGroup]="imageAddForm">
                     <div class="form-group">
-                        <input formControlName="file" type="file" (change)="uploadFile($event)">
+                        <input formControlName="file" type="file" (change)="uploadFile($event)" multiple>
                     </div>
                 </form>
             </div>

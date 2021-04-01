@@ -1,4 +1,4 @@
-<div class="findex-control" *ngIf="car.minFindex<=userFindex">
+<div class="findex-control" *ngIf="car.minFindex<=userFindex || !isAuthenticated()">
   <button style="width: 100%;" *ngIf="rentable" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" class="mybtn btn btn-primary">Kirala</button>
   <div style="margin-top: 10px;" *ngIf="!rentable" class="alert alert-danger">
     Bu araç zaten kiralanmış

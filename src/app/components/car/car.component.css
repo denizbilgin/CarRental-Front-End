@@ -17,6 +17,8 @@ img{
 .card{
     margin: 6px;
     border-color: #EBEBEB;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .mybtn{
@@ -43,4 +45,11 @@ img{
     padding: 5px;
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
+}
+
+section{
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    bottom: 9px;
 }
