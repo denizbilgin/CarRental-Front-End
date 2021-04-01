@@ -72,5 +72,7 @@ export class CarDetailComponent implements OnInit {
     return this.authService.isAuthenticated();
   }
 
-
+  isAdmin(){
+    return this.authService.isAdmin();
+  }
 }

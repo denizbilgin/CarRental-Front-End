@@ -31,6 +31,7 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
 import { UserCardsComponent } from './components/user-cards/user-cards.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
+import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { HomeComponent } from './components/home/home.component';
     UserCardsComponent,
     FooterComponent,
     HomeComponent,
+    AdminPanelComponent,
   ],
   imports: [
     BrowserModule,

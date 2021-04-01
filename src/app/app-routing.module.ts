@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 import { BrandAddComponent } from './components/brand/brand-add/brand-add.component';
 import { BrandComponent } from './components/brand/brand.component';
 import { CarAddComponent } from './components/car/car-add/car-add.component';
@@ -37,7 +38,8 @@ const routes: Routes = [
   {path:"login",component:LoginComponent},
   {path:"register",component:RegisterComponent},
   {path:"profile",component:ProfileComponent,canActivate:[LoginGuard]},
-  {path:"cards",component:UserCardsComponent,canActivate:[LoginGuard]}
+  {path:"cards",component:UserCardsComponent,canActivate:[LoginGuard]},
+  {path:"admin",component:AdminPanelComponent,canActivate:[LoginGuard]}
 ];
 
 @NgModule({

@@ -31,9 +31,11 @@ export class NaviComponent implements OnInit {
   }
 
   getUserDetail(){
-    this.userService.getByUserId(this.currentUserId).subscribe(response => {
-      this.user = response.data;
-    });
+    if (this.currentUserId) {
+      this.userService.getByUserId(this.currentUserId).subscribe(response => {
+        this.user = response.data;
+      });
+    }
   }
 
   logOut(){
@@ -42,5 +44,9 @@ export class NaviComponent implements OnInit {
     setTimeout(function () {
       location.reload();
     });
+  }
+
+  isAdmin(){
+    return this.authService.isAdmin();
   }
 }

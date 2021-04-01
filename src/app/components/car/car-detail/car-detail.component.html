@@ -8,7 +8,7 @@
       <div class="col-md-1">
         <button
           style="float: right"
-          *ngIf="isAuthenticated()"
+          *ngIf="isAuthenticated() && isAdmin()"
           class="btn btn-primary mybtn"
           routerLink="/cars/update/{{ carId }}"
         >

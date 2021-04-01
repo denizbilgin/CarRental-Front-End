@@ -40,6 +40,14 @@
                         <input type="file" formControlName="file" (change)="uploadFile($event)">
                     </div>
                 </form>
+                <div class="images-Update" style="margin-top: 10px;">
+                    <p>Güncellemek istediğiniz resmi seçiniz :</p>
+                    <ul style="list-style: none;">
+                        <li [class]="getCurrentImageClass(image)" *ngFor="let image of carImages" style="float: left; margin-left: 10px;" (click)="setCurrentCarImageId(image)">
+                            <img src="{{apiUrl + image.imagePath}}" width="100px" alt="">
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div class="card-footer">
                 <button style="width: 100%;" class="btn btn-fill btn-primary mybtn" (click)="update()">Güncelle</button>

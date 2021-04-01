@@ -19,7 +19,7 @@ import { ColorService } from 'src/app/services/colorService/color.service';
 export class CarUpdateComponent implements OnInit {
   carUpdateForm:FormGroup;
   imageUpdateForm:FormGroup;
-  imageId:number;
+  images:CarImage[];
   car:Car
   brands:Brand[];
   colors:Color[];
@@ -28,6 +28,7 @@ export class CarUpdateComponent implements OnInit {
   apiUrl = "https://localhost:44373/images/";
   carImageDefault="https://localhost:44373/images/default1.jpg"
   imageFile:File;
+  currentCarImageId:number;
 
   constructor(
     private formBuilder:FormBuilder,
@@ -90,7 +91,8 @@ export class CarUpdateComponent implements OnInit {
       this.carUpdateForm.patchValue({
         modelYear:this.car.modelYear,
         description:this.car.description,
-        dailyPrice:this.car.dailyPrice
+        dailyPrice:this.car.dailyPrice,
+        minFindex:this.car.minFindex
       })
     })
   }
@@ -120,7 +122,7 @@ export class CarUpdateComponent implements OnInit {
 
   getCarImagesByCarId(){
     this.carImageService.getCarImagesByCarId(this.carId).subscribe(response => {
-      this.imageId = response.data[0].id;
+      this.carImages = response.data;
     })
   }
 
@@ -128,9 +130,21 @@ export class CarUpdateComponent implements OnInit {
     console.log(this.carId)
     console.log(this.imageFile)
     if (this.imageUpdateForm.valid) {
-      this.carImageService.update(this.carId,this.imageFile,this.imageId).subscribe(response => {
+      this.carImageService.update(this.carId,this.imageFile,this.currentCarImageId).subscribe(response => {
         this.toastrService.success(response.message,"Başarılı")
       })
     }
+  }
+
+  setCurrentCarImageId(image:CarImage){
+    this.currentCarImageId = image.id;
+    console.log(this.currentCarImageId)
+  }
+
+  getCurrentImageClass(image:CarImage){
+    if (this.currentCarImageId === image.id) {
+      return "border border-danger";
+    }
+    return "";
   }
 }
