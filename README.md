@@ -1,8 +1,3 @@
-# Car Rental
-
-![png](https://user-images.githubusercontent.com/77414874/113522335-4a635400-95a8-11eb-9c01-0afce50a78f2.png)
-
-About Project
 
 ![photo1](https://user-images.githubusercontent.com/77414874/113522001-12f3a800-95a6-11eb-8030-e3910400e68e.png)
 
