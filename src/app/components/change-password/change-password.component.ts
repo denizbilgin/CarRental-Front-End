@@ -36,7 +36,8 @@ export class ChangePasswordComponent implements OnInit {
       this.authService.changePassword(passwordModel).subscribe(response => {
         this.toastrService.success(response.message,"Başarılı");
       },responseError => {
-        this.toastrService.error(responseError.error,"Hata");
+        console.log(responseError)
+        this.toastrService.error(responseError.error.message,"Hata");
       })
     }else{
       this.toastrService.error("Lütfen formu tamamen doldurunuz","Hata")

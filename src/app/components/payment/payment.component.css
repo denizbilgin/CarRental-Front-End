@@ -25,3 +25,8 @@ button{
     border-radius: 6px;
     background-color: #0090c1;
 }
+
+.mycard:hover{
+    color: #0090c1;
+    cursor: pointer;
+}

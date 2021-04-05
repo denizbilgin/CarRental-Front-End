@@ -8,6 +8,8 @@ import { RentalService } from 'src/app/services/rentalService/rental.service';
 import { FormGroup, FormBuilder, FormControl, Validators } from "@angular/forms"
 import { CardDetailService } from 'src/app/services/cardDetailService/card-detail.service';
 import { UserService } from 'src/app/services/userService/user.service';
+import { CardModel } from 'src/app/models/cardModel';
+import { Payment } from 'src/app/models/payment';
 
 @Component({
   selector: 'app-payment',
@@ -18,6 +20,9 @@ export class PaymentComponent implements OnInit {
   rentalAddForm:FormGroup
   rental:Rental;
   isChecked = false;
+  cards:CardModel[];
+  currentCard:CardModel;
+  paymentModel:Payment;
 
   constructor(
     private rentalService:RentalService,
@@ -36,6 +41,7 @@ export class PaymentComponent implements OnInit {
       if(params["rental"]){
         this.rental = JSON.parse(params["rental"]);
         this.createRentalAddForm();
+        this.getCardsByUserId();
       }
     })
   }
@@ -60,8 +66,7 @@ export class PaymentComponent implements OnInit {
   }
 
   addRental(){
-    if (this.rentalAddForm.valid) {
-      let addRentalModel = Object.assign({},this.rentalAddForm.value)
+    if (this.rentalAddForm.valid || this.currentCard) {
       this.rentalService.addRental(this.rental).subscribe(response => {
         this.toastrService.success(response.message,"Başarılı")
         this.CardSave();
@@ -75,13 +80,18 @@ export class PaymentComponent implements OnInit {
   }
 
   checkPayment(){
-    let checkPaymentModel = Object.assign({},this.rentalAddForm.value)
-    this.paymentService.checkPayment(checkPaymentModel).subscribe(response => {
+    if (this.currentCard) {
+       this.paymentModel = Object.assign({},this.currentCard)
+    }
+    else{
+       this.paymentModel = Object.assign({},this.rentalAddForm.value)
+    }
+    this.paymentService.checkPayment(this.paymentModel).subscribe(response => {
         this.toastrService.success(response.message,"Başarılı")
         this.addRental();
         this.updateUserFindex();
     },responseError => {
-      this.toastrService.error(responseError.error,"Hata");
+      this.toastrService.error(responseError.error.message,"Hata");
     })
   }
   
@@ -89,5 +99,16 @@ export class PaymentComponent implements OnInit {
     this.userService.updateUserFindex(this.authService.getUserId()).subscribe(response => {
       this.toastrService.info(response.message,"Bilgi")
     })
+  }
+
+  getCardsByUserId(){
+    this.cardDetailService.getCardsByUserId(this.authService.getUserId()).subscribe(response => {
+      this.cards = response.data;
+    })
+  }
+
+  setCurrentCard(card:CardModel){
+    this.currentCard = card;
+    console.log(this.currentCard)
   }
 }

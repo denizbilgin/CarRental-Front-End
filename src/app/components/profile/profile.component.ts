@@ -55,7 +55,11 @@ export class ProfileComponent implements OnInit {
       this.userService.update(userModel).subscribe(response => {
         this.toastrService.success(response.message,"Başarılı");
       },responseError => {
-        this.toastrService.error(responseError.error,"Hata")
+        if (responseError.error.ValidationErrors.length>0) {
+          for (let i = 0; i < responseError.error.ValidationErrors.length; i++) {
+            this.toastrService.error(responseError.error.ValidationErrors[i].ErrorMessage,"Doğrulama hatası");
+          }
+        }
       })
     }else{
       this.toastrService.error("Lütfen formu tamamen doldurunuz","Hata")
@@ -82,7 +86,11 @@ export class ProfileComponent implements OnInit {
       this.customerService.update(customerModel).subscribe(response => {
         this.toastrService.success(response.message,"Başarılı");
       },responseError => {
-        this.toastrService.error(responseError.error,"Hata")
+        if (responseError.error.ValidationErrors.length>0) {
+          for (let i = 0; i < responseError.error.ValidationErrors.length; i++) {
+            this.toastrService.error(responseError.error.ValidationErrors[i].ErrorMessage,"Doğrulama hatası");
+          }
+        }
       })
     }else{
       this.toastrService.error("Lütfen formu tamamen doldurunuz","Hata")

@@ -2,58 +2,80 @@
     <caption>
         Ödeme İşlemleri
     </caption>
-    <div class="icons">
-        <img src="https://img.icons8.com/color/48/000000/visa.png" />
-        <img
-          src="https://img.icons8.com/color/48/000000/mastercard-logo.png"
-        />
-        <img src="https://img.icons8.com/color/48/000000/maestro.png" />
+    <div class="saved-cards" style="margin-bottom: 10px;" *ngIf="cards.length">
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Kayıtlı Kartlarım
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <div class="row">
+                        <ul class="list-group">
+                            <li (click)="setCurrentCard(card)" *ngFor="let card of cards" class="list-group-item col-md-2 mycard"><i class="fas fa-credit-card"></i> {{card.cardNumber}}</li>
+                        </ul>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
     </div>
-    <form [formGroup]="rentalAddForm">
-        <div class="mb-3 row">
-            <div class="col-md-4">
-                <label for="cardNumber" class="form-label">Kredi Kartı Numaranızı Giriniz :</label>
-            </div>
-            <div class="col-md-8">
-                <input formControlName="cardNumber" type="text" class="form-control" id="cardNumber" placeholder="örn: 8109771495247556">
-            </div>
+    <div *ngIf="!currentCard">
+        <div class="icons">
+            <img src="https://img.icons8.com/color/48/000000/visa.png" />
+            <img
+              src="https://img.icons8.com/color/48/000000/mastercard-logo.png"
+            />
+            <img src="https://img.icons8.com/color/48/000000/maestro.png" />
         </div>
-        <div class="mb-3 row">
-            <div class="col-md-4">
-                <label for="firstName" class="form-label">Kart Sahibinin Adı : </label>
-            </div>
-            <div class="col-md-8">
-                <input formControlName="firstName" type="text" class="form-control" id="firstName" placeholder="örn: Mehmet">
-            </div>
-        </div>
-        <div class="mb-3 row">
-            <div class="col-md-4">
-                <label for="lastName" class="form-label">Kart Sahibinin Soyadı : </label>
-            </div>
-            <div class="col-md-8">
-                <input formControlName="lastName" type="text" class="form-control" id="lastName" placeholder="örn: Yıldız">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="mb-3">
-                    <label for="cvv" class="form-label">Güvenlik kodu : </label>
-                    <input formControlName="cVV" type="number" class="form-control" id="cvv" placeholder="örn: 123">
+        <form [formGroup]="rentalAddForm">
+            <div class="mb-3 row">
+                <div class="col-md-4">
+                    <label for="cardNumber" class="form-label">Kredi Kartı Numaranızı Giriniz :</label>
+                </div>
+                <div class="col-md-8">
+                    <input formControlName="cardNumber" type="text" class="form-control" id="cardNumber" placeholder="örn: 8109771495247556">
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="mb-3">
-                    <label for="expirationDate" class="form-label">Son Kullanım Tarihi : </label>
-                    <input formControlName="expirationDate" type="text" class="form-control" id="expirationDate" placeholder="örn: 20/27">
-                </div>   
+            <div class="mb-3 row">
+                <div class="col-md-4">
+                    <label for="firstName" class="form-label">Kart Sahibinin Adı : </label>
+                </div>
+                <div class="col-md-8">
+                    <input formControlName="firstName" type="text" class="form-control" id="firstName" placeholder="örn: Mehmet">
+                </div>
             </div>
+            <div class="mb-3 row">
+                <div class="col-md-4">
+                    <label for="lastName" class="form-label">Kart Sahibinin Soyadı : </label>
+                </div>
+                <div class="col-md-8">
+                    <input formControlName="lastName" type="text" class="form-control" id="lastName" placeholder="örn: Yıldız">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="cvv" class="form-label">Güvenlik kodu : </label>
+                        <input formControlName="cVV" type="number" class="form-control" id="cvv" placeholder="örn: 123">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="expirationDate" class="form-label">Son Kullanım Tarihi : </label>
+                        <input formControlName="expirationDate" type="text" class="form-control" id="expirationDate" placeholder="örn: 20/27">
+                    </div>   
+                </div>
+            </div>
+        </form>
+        <div class="check">
+            <div class="form-check form-switch">
+                <input [(ngModel)]="isChecked" class="form-check-input" type="checkbox" id="isChecked" checked>
+                <label class="form-check-label" for="isChecked">Kartımı kaydet</label>
+              </div>
         </div>
-    </form>
-    <div class="check">
-        <div class="form-check form-switch">
-            <input [(ngModel)]="isChecked" class="form-check-input" type="checkbox" id="isChecked" checked>
-            <label class="form-check-label" for="isChecked">Kartımı kaydet</label>
-          </div>
     </div>
     <div>
         <button (click)="checkPayment()" type="button" class="btn btn-primary mybtn">İşlemi Tamamla</button>

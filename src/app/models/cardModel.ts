@@ -3,7 +3,7 @@ export interface CardModel{
     userId:number;
     firstName:string;
     lastName:string
-    cvv:number;
+    cVV:number;
     expirationDate:string;
     cardNumber:string;
 }

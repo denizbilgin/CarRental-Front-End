@@ -127,8 +127,6 @@ export class CarUpdateComponent implements OnInit {
   }
 
   updateImage(){
-    console.log(this.carId)
-    console.log(this.imageFile)
     if (this.imageUpdateForm.valid) {
       this.carImageService.update(this.carId,this.imageFile,this.currentCarImageId).subscribe(response => {
         this.toastrService.success(response.message,"Başarılı")
