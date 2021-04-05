@@ -41,9 +41,7 @@ export class BrandComponent implements OnInit {
   getAllBrandClass() {
     if (!this.currentBrand || this.currentBrand.id==0) {
       return 'list-group-item myactive';
-    }else if(this.currentBrand.brandName==""){
-      return 'list-group-item myactive';
-    } 
+    }
     else {
       return 'list-group-item';
     }

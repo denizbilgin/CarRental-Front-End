@@ -1,21 +1,23 @@
-<ul class="list-group">
+<ul class="list-group ">
     <div class="mb-3">
         <div>
             <label style="font-size: 1.3rem;" for="filterText" class="form-label">Marka Ara </label> <i style="margin-left: 7px;" class="fas fa-search"></i>
         </div>
-        <input [(ngModel)]="filterText" type="text" class="form-control" id="filterText" placeholder="Arama ifadesi giriniz">
+        <input [(ngModel)]="filterText" type="text" class="form-control myShadow" id="filterText" placeholder="Arama ifadesi giriniz">
     </div>
     <div *ngIf="filterText.length>2" class="alert alert-primary">
         {{filterText}} aradınız
     </div>
-    <li class="list-group-item dark-blue" aria-current="true">Markalar</li>
-    <li
-    (click)="clearCurrentBrand()"
-    [class]="getAllBrandClass()"
-    routerLink="/cars">Tüm Markalar</li>
-    <li 
-    routerLink="/cars/brand/{{brand.id}}"
-    (click)="getCurrentBrand(brand)" 
-    [class]="getCurrentBrandClass(brand)" 
-    *ngFor="let brand of brands |brandFilter:filterText">{{brand.brandName}}</li>
+    <div class="myShadow">
+        <li class="list-group-item dark-blue" aria-current="true">Markalar</li>
+        <li
+        (click)="clearCurrentBrand()"
+        [class]="getAllBrandClass()"
+        routerLink="/cars">Tüm Markalar</li>
+        <li 
+        routerLink="/cars/brand/{{brand.id}}"
+        [class]="getCurrentBrandClass(brand)" 
+        (click)="getCurrentBrand(brand)" 
+        *ngFor="let brand of brands |brandFilter:filterText">{{brand.brandName}}</li>
+    </div>
 </ul>

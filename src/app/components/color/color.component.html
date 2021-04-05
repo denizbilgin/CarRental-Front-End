@@ -1,21 +1,23 @@
 <ul class="list-group">
   <div class="mb-3">
     <label style="font-size: 1.3rem;" for="filterText" class="form-label">Renk Ara</label><i style="margin-left: 7px;" class="fas fa-search"></i>
-    <input [(ngModel)]="filterText" type="text" class="form-control" id="filterText" placeholder="Arama ifadesi giriniz">
+    <input [(ngModel)]="filterText" type="text" class="form-control myShadow" id="filterText" placeholder="Arama ifadesi giriniz">
   </div>
   <div *ngIf="filterText.length>2" class="alert alert-primary">
     {{filterText}} aradınız
   </div>
-  <li class="list-group-item dark-blue" aria-current="true">Renkler</li>
-  <li
-    (click)="clearCurrentColor()"
-    [class]="getAllColorClass()"
-    routerLink="/cars">Tüm Renkler</li>
+  <div class="myShadow">
+    <li class="list-group-item dark-blue" aria-current="true">Renkler</li>
     <li
-    routerLink="/cars/color/{{color.id}}" 
-    (click)="getCurrentColor(color)" 
-    [class]="getCurrentColorClass(color)" 
-    *ngFor="let color of colors |colorFilter:filterText">{{color.colorName}}</li>
+      (click)="clearCurrentColor()"
+      [class]="getAllColorClass()"
+      routerLink="/cars">Tüm Renkler</li>
+      <li
+      routerLink="/cars/color/{{color.id}}" 
+      (click)="getCurrentColor(color)" 
+      [class]="getCurrentColorClass(color)" 
+      *ngFor="let color of colors |colorFilter:filterText">{{color.colorName}}</li>
+  </div>
 </ul>
 <div *ngIf="dataLoaded==false" class="spinner-border text-success" role="status">
     <span class="visually-hidden">Loading...</span>

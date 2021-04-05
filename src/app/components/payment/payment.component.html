@@ -17,12 +17,15 @@
                             <li (click)="setCurrentCard(card)" *ngFor="let card of cards" class="list-group-item col-md-2 mycard"><i class="fas fa-credit-card"></i> {{card.cardNumber}}</li>
                         </ul>
                     </div>
+                    <div *ngIf="currentCard" class="alert alert-primary" style="margin-top: 10px; position: relative; right: 10px;">
+                        {{currentCard.cardNumber}} numaralı kartı seçtiniz.
+                    </div>
                 </div>
               </div>
             </div>
           </div>
     </div>
-    <div *ngIf="!currentCard">
+    <div *ngIf="!currentCard" class="myShadow" style="background: white; padding: 10px; margin-bottom: 10px; border-radius: 8px;">
         <div class="icons">
             <img src="https://img.icons8.com/color/48/000000/visa.png" />
             <img

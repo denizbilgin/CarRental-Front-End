@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Color } from 'src/app/models/color';
 import { ColorService } from 'src/app/services/colorService/color.service';
+import { Location } from "@angular/common";
 
 @Component({
   selector: 'app-color',
@@ -13,10 +15,11 @@ export class ColorComponent implements OnInit {
   currentColor:Color;
   filterText="";
 
-  constructor(private colorService:ColorService) { }
+  constructor(private colorService:ColorService,private route:Router,private location:Location) { }
 
   ngOnInit(): void {
     this.getColors();
+
   }
 
   getColors(){

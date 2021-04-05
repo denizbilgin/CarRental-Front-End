@@ -21,7 +21,7 @@
     <div
       style="width: 50%; height: 320px; margin-top: 20px"
       id="carouselExampleIndicators"
-      class="carousel slide col-md-6"
+      class="carousel slide col-md-6 "
       data-bs-ride="carousel"
     >
       <div class="carousel-indicators">
@@ -44,7 +44,7 @@
             src="{{ apiUrl + image.imagePath }}"
             style="width: 100%; height: 320px"
             alt="Image"
-            class="d-block"
+            class="d-block myShadow"
           />
         </div>
       </div>
@@ -69,14 +69,16 @@
     </div>
     <div class="col-md-6">
       <ul *ngIf="car" class="list-group">
-        <li class="list-group-item">Markası : {{ car.brandName }}</li>
-        <li class="list-group-item">Rengi : {{ car.colorName }}</li>
-        <li class="list-group-item">Model Yılı : {{ car.modelYear }}</li>
-        <li class="list-group-item">
-          Günlük Ücreti : {{ car.dailyPrice | currency }}
-        </li>
-        <li class="list-group-item">Açıklaması : {{ car.description }}</li>
-        <li class="list-group-item">Findex : {{ car.minFindex }}</li>
+        <div class="myShadow">
+          <li class="list-group-item">Markası : {{ car.brandName }}</li>
+          <li class="list-group-item">Rengi : {{ car.colorName }}</li>
+          <li class="list-group-item">Model Yılı : {{ car.modelYear }}</li>
+          <li class="list-group-item">
+            Günlük Ücreti : {{ car.dailyPrice | currency }}
+          </li>
+          <li class="list-group-item">Açıklaması : {{ car.description }}</li>
+          <li class="list-group-item">Findex : {{ car.minFindex }}</li>
+        </div>
         <app-rental></app-rental>
       </ul>
     </div>

@@ -19,6 +19,7 @@ img{
     border-color: #EBEBEB;
     padding-left: 0;
     padding-right: 0;
+    padding-bottom: 0;
 }
 
 .mybtn{
@@ -51,5 +52,12 @@ section{
     display: inline-block;
     width: 100%;
     position: relative;
-    bottom: 9px;
+    bottom: 7px;
+    left: 0.6px;
+}
+
+.card:hover{
+    transform: scale(1.04);
+    transition: 1s;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
 }

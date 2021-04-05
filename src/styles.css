@@ -7,3 +7,7 @@ html{
     margin-bottom: 0;
     padding-bottom: 0;
 }
+
+.myShadow{
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
