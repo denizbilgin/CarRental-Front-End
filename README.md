@@ -10,7 +10,7 @@ Frontend of [CarRental](https://github.com/denizbilgin/CarRental)
 ![localhost_4200_home](https://user-images.githubusercontent.com/77414874/114265609-72184900-99fa-11eb-92f9-d824916b2262.png)
 
 
-![photo3](https://user-images.githubusercontent.com/77414874/113522042-4afaeb00-95a6-11eb-9c8e-a37f229412a2.png)
+![localhost_4200_cars](https://user-images.githubusercontent.com/77414874/114267667-bd842480-9a05-11eb-8300-93b8f6e2e14e.png)
 
 
 ![photo4](https://user-images.githubusercontent.com/77414874/113522044-50f0cc00-95a6-11eb-86f3-f163e59d9e59.png)
